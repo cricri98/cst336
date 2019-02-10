@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Js review</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            
+            function $(id){
+                return document.getElementById(id);
+            }
+            
+            function doMagic(){
+                // alert("it's working!");
+                $("catImage").src="img/now_you_dont.png";
+                
+                document.getElementById("catImage").src ="img/now_you_dont.png";
+                document.getElementById("message").innerHTML ="... now you don't!";
+                
+                document.getElementById("message").style.color = "red";
+                document.getElementById("reapperBtm").style.display = "inline";
+                document.getElementById("doMagic").style.display= "none";
+            }    
+            
+        </script>
+        
+        <style>
+            #reapperBtm{
+                display:none;
+            }
+        </style>
+        
+    </head>
+    <body>
+        <img id="catImage"src="img/now_you_see_me.png"> <br>
+            <span id="message">Now you see me...</span>
+        <br>
+        <button id="doMagic"onclick="doMagic()"> Do Magic!</button>
+        <button id=""onclick="reapperBtm()"> Bring me back!</button>
+    </body>
+</html>
