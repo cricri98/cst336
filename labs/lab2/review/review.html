@@ -21,12 +21,21 @@
                 document.getElementById("doMagic").style.display= "none";
             }    
             
+            function reapperBtm(){
+                $("catImage").src="img/now_you_see_me.png";
+                document.getElementById("catImage").src="img/now_you_see_me.png";
+                document.getElementById("message").innerHTML ="Now you see!";
+                
+                
+                document.getElementById("message").style.color ="black";
+                document.getElementById("doMagic").style.display="inline";
+                document.getElementById("reapperBtm").style.display ="none";
+            }
+            
         </script>
         
         <style>
-            #reapperBtm{
-                display:none;
-            }
+           
         </style>
         
     </head>
@@ -35,6 +44,6 @@
             <span id="message">Now you see me...</span>
         <br>
         <button id="doMagic"onclick="doMagic()"> Do Magic!</button>
-        <button id=""onclick="reapperBtm()"> Bring me back!</button>
+        <button id="reapperBtm"onclick="reapperBtm()"> Bring me back!</button>
     </body>
 </html>
