@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slot Machine </title>
+        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+        <link href="css/styles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Slot Machine</h1>
+        <button id="playBtn">Play!</button>
+        <div id="image1"></div>
+        <div id="image2"></div>
+        <div id="image3"></div>
+        
+        <script>
+        // 
+        let imageArray = ["cherry","grapes","lemon"];
+        let randomIndex =  Math.floor(Math.random()*3);
+        let randomImage = imageArray(randomIndex);
+        
+        $("#image1").html("img/src=img/"+randomImage+".png />" );
+        $("playBtn").on("click", function(){
+            for(var i=0; i<3; i++){
+                randomImage = imageArray(randomIndex);
+            }
+        });
+        </script>
+    </body>
+</html>
