@@ -2,21 +2,23 @@
 <html>
     <head>
         <title>Us Gepgraphy Quiz </title>
-        <link rel="stylesheet" href="css/styles.css">
-          <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+        <!--<link rel="stylesheet" href="css/styles.css">-->
+          <!--<script src="https://code.jquery.com/jquery-3.1.0.js"></script>-->
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+          <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
         <h1>Us Geograhy Quiz</h1>
         
-        <h2>What is the capital of California?</h2>
+        <h2><span id="markImg1"></span>What is the capital of California?</h2>
         <input type="text " id="q1">
         <div id="q1_feedback">
             
         </div>
         
-        <h2>What is the longest river?</h2>
+        <h2><span id="markImg2"></span>What is the longest river?</h2>
         <select id ="q2">
-            <option>Select one</option>
+            <option value="">Select one</option>
             <option>Mississippi</option>
             <option>Missouri</option>
             <option>Colorado</option>
@@ -24,7 +26,7 @@
         </select>
         <div id="q2_feedback"></div>
         
-        <h2>What is the smallest state?</h2>
+        <h2><span id="markImg3"></span>What is the smallest state?</h2>
         <input type="radio" name="q3" id="maine" value="Maine"><label for"maine">Maine</label>
         <input type="radio" name="q3" id="ri" value="Rhode Island"><label for"ri">Rhode Island</label>        
         <input type="radio" name="q3" id="maryland" value="Maryland"><label for"maryland">Maryland</label>
@@ -32,7 +34,7 @@
 
         <div id="q3_feedback"></div>
         
-        <h2>What presidents are carved into Mount Rushmore?</h2>
+        <h2><span id="markImg4"></span>What presidents are carved into Mount Rushmore?</h2>
         <input type="checkbox" id="jackson" ><label for="jackson">Jackson</label>
         <input type="checkbox" id="franklin"><label for="franklin">Franklin</label>
         <input type="checkbox" id="jefferson" ><label for="jefferson">Jefferson</label>
@@ -40,16 +42,20 @@
         <div id="q4_feedback"></div>
         
         
-        <h2>What image is the seal of California?</h2>
-        <img src="img/seal1.png" alt"Seal 1" class"active" id="seal1">
-        <img src="img/seal2.png" alt"Seal 2" class"active" id="seal2">
-        <img src="img/seal3.png" alt"Seal 3" class"active" id="seal3">
+        <h2><span id="markImg5"></span>What image is the seal of California?</h2>
+        <img src="img/seal1.png" alt"Seal 1" class="active" id="seal1">
+        <img src="img/seal2.png" alt"Seal 2" class="active" id="seal2">
+        <img src="img/seal3.png" alt"Seal 3" class="active" id="seal3">
+        <div id="q5_feedback"></div>
         
         <br><br>
         <h2 id="total"></h2>
         <button id="submitBtn">Submit</button>
+        <h2 id="validSubmit"></h2>
+        <h2 id="totalTimes"></h2>
+        <h3 id="prevScores"></h3>
         <!--<main></main>-->
-        
+       
     </body>
     <script>
         let q1_value =20;
@@ -59,20 +65,26 @@
         
         let total_points=0;
         
-        let q1_answer ="sacremento";
+        let q1_answer ="sacramento";
         let q2_answer ="Missouri";
         let q3_answer ="Rhode Island";
-        let q5_answer ="";
+        let q5_response="";
+        let q5_answer ="seal2";
+        // let scoresArray = localStorage.getItem("scoreHistory"); 
+        // if(scoresArray== null){
+        //     scoresArray = scoresArray[''];
+        // }
         //let q4_answer;
         
-           $(".active").on("click", function(){
-               
-               $(this).css("background","yellow")
-              
-           });
+           $(".active").on( "click", function() {
+             $(".active").css("background","");
+             $(this).css("background","yellow");
+             //alert($(this).attr("id"));
+             q5_response = $(this).attr("id");
+        });
            
         $("#submitBtn").on("click", function(){
-            // alert($("#q1").val());
+           // alert($("#q1").val());
             let q1_response =$("#q1").val().toLowerCase();
             let q2_response =$("#q2").val();
             let q3_response = $("input[name=q3]:checked").val();
@@ -81,20 +93,25 @@
             if(q1_response == q1_answer){
                 $("#q1_feedback").html("Correct!");
                 total_points+=20;
+                $("#markImg1").html("<img src ='img/checkmark.png' alt='checkmark'>");
+                
                 // alert(total_points);
                //$("#total").html("The total Score is: "+total_points);
                 
             }else{
                  $("#q1_feedback").html("Incorrect!");
+                 $("#markImg1").html("<img src ='img/xmark.png' alt='incorrect'>");
             }
             
             //Question 2
             if(q2_response == q2_answer){
                 $("#q2_feedback").html("Correct!");
                 total_points+=20;
+                $("#markImg2").html("<img src ='img/checkmark.png' alt='checkmark'>");
                // $("total").html("The total Score is: "+total_points);
             }else{
                 $("#q2_feedback").html("Incorrect");
+                $("#markImg2").html("<img src ='img/xmark.png' alt='incorrect'>");
             }
             
             //Question 3 
@@ -102,19 +119,35 @@
                 $("#q3_feedback").html("Correct!");
                 total_points+=20;
                 $("total").html("The total Score is: "+total_points);
+                $("#markImg3").html("<img src ='img/checkmark.png' alt='checkmark'>");
+                
              }
              else{
                  $("#q3_feedback").html("Incorrect");
+                 $("#markImg3").html("<img src ='img/xmark.png' alt='incorrect'>");
              }
              
              //Question4 
              if(document.getElementById('jefferson').checked == true && document.getElementById('roosevelt').checked==true){
                  $("#q4_feedback").html("Correct!");
                  total_points+=20;
+                 $("#markImg4").html("<img src ='img/checkmark.png' alt='checkmark'>");
+                
              }else{
                  $("#q4_feedback").html("Incorrect!")
+                 $("#markImg4").html("<img src ='img/xmark.png' alt='incorrect'>");
              }
              
+             //Question
+             if(q5_response ==q5_answer){
+                 $("#q5_feedback").html("Correct");
+                 total_points+=20;
+                  $("#markImg5").html("<img src ='img/checkmark.png' alt='checkmark'>");
+             }
+             else{
+                 $("q5_feedback").html("Incorrect");
+                 $("#markImg5").html("<img src ='img/xmark.png' alt='incorrect'>");
+             }
              
              //Question 4
              
