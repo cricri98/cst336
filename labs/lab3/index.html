@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Us Gepgraphy Quiz </title>
+        <title>US Gepgraphy Quiz </title>
         <!--<link rel="stylesheet" href="css/styles.css">-->
           <!--<script src="https://code.jquery.com/jquery-3.1.0.js"></script>-->
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
           <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
-        <h1>Us Geograhy Quiz</h1>
+        <h1>US Geograhy Quiz</h1>
         
         <h2><span id="markImg1"></span>What is the capital of California?</h2>
         <input type="text " id="q1">
@@ -35,9 +35,9 @@
         <div id="q3_feedback"></div>
         
         <h2><span id="markImg4"></span>What presidents are carved into Mount Rushmore?</h2>
-        <input type="checkbox" id="jackson" ><label for="jackson">Jackson</label>
-        <input type="checkbox" id="franklin"><label for="franklin">Franklin</label>
-        <input type="checkbox" id="jefferson" ><label for="jefferson">Jefferson</label>
+        <input type="checkbox" id="jackson" ><label for="jackson">A.Jackson</label>
+        <input type="checkbox" id="franklin"><label for="franklin">B.Franklin</label>
+        <input type="checkbox" id="jefferson" ><label for="jefferson">T.Jefferson</label>
         <input type="checkbox" id="roosevelt"><label for="roosevelt">T.Roosevelt</label>
         <div id="q4_feedback"></div>
         
@@ -54,8 +54,15 @@
         <h2 id="validSubmit"></h2>
         <h2 id="totalTimes"></h2>
         <h3 id="prevScores"></h3>
+        
         <!--<main></main>-->
-       
+        <footer>
+            <img src="../../img/buddy_verified.png" alt="buddy checked"/><br/>
+            &copy;  2019. Christopher Jimenez - CST 336 Internet Programming <br />
+        <strong>Disclaimer:</strong> The content of this page is fake. It's only for educational purposes.
+            <br/><br/>
+            <img src="../../img/logo.png" alt="csumb.logo" />
+        </footer>
     </body>
     <script>
         let q1_value =20;
@@ -94,12 +101,13 @@
                 $("#q1_feedback").html("Correct!");
                 total_points+=20;
                 $("#markImg1").html("<img src ='img/checkmark.png' alt='checkmark'>");
-                
+                $("#q1_feedback").attr("class", "correct");
                 // alert(total_points);
                //$("#total").html("The total Score is: "+total_points);
                 
             }else{
                  $("#q1_feedback").html("Incorrect!");
+                 $("#q1_feedback").attr("class", "incorrect!");
                  $("#markImg1").html("<img src ='img/xmark.png' alt='incorrect'>");
             }
             
@@ -109,54 +117,56 @@
                 total_points+=20;
                 $("#markImg2").html("<img src ='img/checkmark.png' alt='checkmark'>");
                // $("total").html("The total Score is: "+total_points);
+                 $("#q2_feedback").attr("class", "correct");
             }else{
-                $("#q2_feedback").html("Incorrect");
+                $("#q2_feedback").html("Incorrect!");
+                $("#q2_feedback").attr("class", "incorrect");
                 $("#markImg2").html("<img src ='img/xmark.png' alt='incorrect'>");
             }
             
             //Question 3 
              if(q3_response == q3_answer){
                 $("#q3_feedback").html("Correct!");
+                $("#q3_feedback").attr("class", "correct");
                 total_points+=20;
                 $("total").html("The total Score is: "+total_points);
                 $("#markImg3").html("<img src ='img/checkmark.png' alt='checkmark'>");
                 
              }
              else{
-                 $("#q3_feedback").html("Incorrect");
+                 $("#q3_feedback").html("Incorrect!");
+                 $("#q3_feedback").attr("class", "incorrect");
                  $("#markImg3").html("<img src ='img/xmark.png' alt='incorrect'>");
              }
              
-             //Question4 
+             //Question 4 
              if(document.getElementById('jefferson').checked == true && document.getElementById('roosevelt').checked==true){
                  $("#q4_feedback").html("Correct!");
                  total_points+=20;
                  $("#markImg4").html("<img src ='img/checkmark.png' alt='checkmark'>");
-                
+                 $("#q4_feedback").attr("class", "correct");
              }else{
                  $("#q4_feedback").html("Incorrect!")
+                 $("#q4_feedback").attr("class", "incorrect");
                  $("#markImg4").html("<img src ='img/xmark.png' alt='incorrect'>");
              }
              
-             //Question
+             //Question 5
              if(q5_response ==q5_answer){
-                 $("#q5_feedback").html("Correct");
+                 $("#q5_feedback").html("Correct!");
                  total_points+=20;
                   $("#markImg5").html("<img src ='img/checkmark.png' alt='checkmark'>");
+                    $("#q5_feedback").attr("class", "correct");
              }
              else{
-                 $("q5_feedback").html("Incorrect");
+                 $("#q5_feedback").html("Incorrect!");
                  $("#markImg5").html("<img src ='img/xmark.png' alt='incorrect'>");
+                 $("#q5_feedback").attr("class", "incorrect");
              }
              
-             //Question 4
-             
-            // $("total").html("The total Score is: "+total_points);
-            // alert(q2_response);
-            // if(q2_response == ){
-                
-            // }
-            
+                if(total_points==100){
+              //   $()
+           }
         });
     </script>
 </html>

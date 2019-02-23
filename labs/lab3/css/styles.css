@@ -1,7 +1,14 @@
 body{
-    text-align:center;
-    background-color:#C5E6F8; 
+    text-align: center;
+    background-color: #C5E6F8; 
 }
-/*.correct{*/
-    
-/*}*/
+.correct{
+color: green;    
+font-size: 18pt;
+}
+
+.incorrect{
+color: red;
+font-size: 18pt;
+}
+
