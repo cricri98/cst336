@@ -120,12 +120,12 @@
                 $("#q1_feedback").attr("class", "correct");
                 // alert(total_points);
                //$("#total").html("The total Score is: "+total_points);
-                
-            }else{
-                 $("#q1_feedback").html("Incorrect!");
-                 $("#q1_feedback").attr("class", "incorrect!");
-                 $("#markImg1").html("<img src ='img/xmark.png' alt='incorrect'>");
+            } else{
+                $("#q1_feedback").html("Incorrect!");
+                $("#markImg1").html("<img src ='img/xmark.png' alt='xmark'>");
+                $("#q1_feedback").attr("class", "incorrect");
             }
+            
             
             //Question 2
             if(q2_response == q2_answer){
