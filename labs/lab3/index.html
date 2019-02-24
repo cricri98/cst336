@@ -2,8 +2,7 @@
 <html>
     <head>
         <title>US Gepgraphy Quiz </title>
-        <!--<link rel="stylesheet" href="css/styles.css">-->
-          <!--<script src="https://code.jquery.com/jquery-3.1.0.js"></script>-->
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
           <link rel="stylesheet" href="css/styles.css">
     </head>
@@ -50,6 +49,7 @@
         
         <br><br>
         <h2 id="total"></h2>
+        <h2 id="congrats"></h2>
         <button id="submitBtn">Submit</button>
         <h2 id="validSubmit"></h2>
         <h2 id="totalTimes"></h2>
@@ -69,19 +69,19 @@
         let q2_value =20;
         let q3_value =20;
         let q4_value =20;
-        
-        let total_points=0;
-        
+       // let total_points=0;
         let q1_answer ="sacramento";
         let q2_answer ="Missouri";
         let q3_answer ="Rhode Island";
         let q5_response="";
         let q5_answer ="seal2";
-        // let scoresArray = localStorage.getItem("scoreHistory"); 
-        // if(scoresArray== null){
-        //     scoresArray = scoresArray[''];
-        // }
-        //let q4_answer;
+        let totalTimes = localStorage.getItem("totalTimesTaken");
+        let scoresArray = localStorage.getItem("scoreHistory");
+        if (scoresArray == null) {
+           scoresArray = [];
+        } else {
+            scoresArray = scoresArray.split(","); //creates array from a string
+        }
         
            $(".active").on( "click", function() {
              $(".active").css("background","");
@@ -90,12 +90,28 @@
              q5_response = $(this).attr("id");
         });
            
+           function isFormValid(){
+               let isValid = true;
+               if ($("#q2").val() == "") {
+                isValid = false;
+                $("#validSubmission").html("Question 1 not answered");
+            }
+            return isValid;
+        }
+        
         $("#submitBtn").on("click", function(){
            // alert($("#q1").val());
+            $("#validSubmission").html("");
+            
+            if (!isFormValid()) {   //isFormValid == false
+                return;
+            }
+           let total_points=0;
             let q1_response =$("#q1").val().toLowerCase();
             let q2_response =$("#q2").val();
             let q3_response = $("input[name=q3]:checked").val();
             // let q4_response ="";
+            
             //Question 1
             if(q1_response == q1_answer){
                 $("#q1_feedback").html("Correct!");
@@ -165,8 +181,24 @@
              }
              
                 if(total_points==100){
-              //   $()
-           }
+               $("#congrats").html("Congrats! You answered all the questions correctly!");
+            	$("#congrats").attr("class", "correct");
+               }else{
+                   $("#congrats").html("");
+               }
+           
+          //Tots     
+            $("#total").html("The total Score is: " + total_points);
+            totalTimes++;
+            localStorage.setItem("totalTimesTaken",totalTimes);
+            $("#totalTimes").html("Quiz taken: " + totalTimes + " time(s)");
+            scoresArray.push(total_points);
+            $("#prevScores").html("Score History: ");
+            scoresArray.forEach(function(score){
+            $("#prevScores").append(score + " ");
+            });
+            
+            localStorage.setItem("scoreHistory",scoresArray);
         });
     </script>
 </html>
