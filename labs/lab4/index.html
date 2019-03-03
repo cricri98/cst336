@@ -4,6 +4,8 @@
 <title> Sign Up Page </title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/styles.css">
  <script>
     $(document).ready(function(){
@@ -22,7 +24,7 @@
                     $("#county").append("<option>"+data[i].county+"</option>");  
                  }
                 },
-                complete: function(data,status) { //optional, used for debugging purposes
+                complete: function(data,status) { // for debugging purposes
                 //alert(status);
                }
             });//ajax
@@ -60,7 +62,6 @@
                 complete: function(data,status) { //optional, used for debugging purposes
                    // alert(status);
                 }
-
             });//ajax
           });// zipCode
     
@@ -122,15 +123,20 @@
 </head>
 <body>
 <div class="container">
+    <div class="card bg-light">
+    <article class="card-body mx-auto" style="max-width: 400px;">
 <h1> Sign Up Form </h1>
 
         <fieldset>
         <legend>Sign Up</legend>
+        <div id="info1">
         First Name: <input type="text"><br> 
         Last Name: <input type="text"><br> 
         Email: <input type="text"><br> 
         Phone Number:<input type="text"><br><br>
+        </div>
         
+        <div id="info2">
         <div id="zipCodeMsg"></div><br>
         Zip Code: <input type="text" id="zipCode"><br>
         City: <span id="city"></span>
@@ -139,7 +145,9 @@
         <br>
         Longitude: <span id="longitude"></span>
         <br><br>
+        </div>
         
+        <div id="info3">
         State: 
         <select id="state">
             <option> Select One </option>
@@ -149,16 +157,28 @@
         </select>
         <br>
         Select a County: <select id="county"></select><br>
+        </div>
         
+        <div id="info4">
         <div id=userNameMsg></div><br>
         Desired Username: <input type="text" id="username"><br>
         Password: <input type="password" id="password"><br>
         <div id="passwordMsg"></div>
         Type Password Again: <input type="password" id="passwordConfirm"><br>
-        <div id="passwordConfirmMsg"></div>
+        <div id="passwordConfirmMsg"></div><br>
+        </div>
         <input type="submit" value="Sign up!" id="submit">
         </fieldset>
+        <article>
+     </div>
 </div>
+<footer>
+            <!--<img src="../../img/buddy_verified.png" alt="buddy checked"/><br/>-->
+            &copy;  2019. Christopher Jimenez - CST 336 Internet Programming <br />
+        <strong>Disclaimer:</strong> The content of this page is fake. It's only for educational purposes.
+            <br/><br/>
+            <img src="../../img/logo.png" alt="csumb.logo" />
+        </footer>
 </body>
 
 </html>

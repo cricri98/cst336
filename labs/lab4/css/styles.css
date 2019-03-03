@@ -3,7 +3,8 @@ body{
     background-color: #1E90FF;
 }
 .container{
-    color: white;
+    background-clip:white;
+    width: 75%;
 }
 .success{
     color:green;
@@ -11,4 +12,20 @@ body{
 
 .fail{
     color:red;
+}
+
+#info1{
+    text-align:left; 
+}
+#info2{
+    text-align:left;
+}
+#info3{
+    text-align:left;
+}
+#info4{
+    text-align:left;
+}
+#submit{
+    border-radius: 8px;
 }
