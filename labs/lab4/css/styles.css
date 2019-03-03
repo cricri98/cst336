@@ -1,0 +1,14 @@
+body{
+    text-align: center;
+    background-color: #1E90FF;
+}
+.container{
+    color: white;
+}
+.success{
+    color:green;
+}
+
+.fail{
+    color:red;
+}
