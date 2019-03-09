@@ -4,7 +4,7 @@
         <title> Sign Up - PHP Web API Version </title>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        
+        <link rel="stylesheet" href="css/styles.css">
         <script>
             /*global $*/
             
@@ -47,8 +47,57 @@
                         }
                     
                     });//ajax  
-                });
-            });
+                });// username2
+                
+                $("#password").on("click",function(){
+            
+                // alert("hello vietman");
+            $.ajax({
+
+                    type: "GET",
+                    url: "api/strongPwdAPI.php",
+                    dataType:"json",
+                    data: {"username" : "10"},
+                    
+                    
+                    success: function(data,status) {
+                    alert(data.suggestedPwd);
+                    
+                    },
+                    complete: function(data,status) { //optional, used for debugging purposes
+                    //alert(status);
+                    }
+                    
+                    });//ajax
+                 });// password
+                 
+             $("#password").on("change", function(){
+                    
+                    //alert("hi");
+                    
+                    $.ajax({
+
+                        type: "GET",
+                        url: "api/validatePwd.php",
+                        dataType: "json",
+                        data: {"username" : $("#username1").val(),
+                               "pwd" : $("#password").val()
+                        },
+                        success: function(data,status) {
+                          
+                          alert(data);
+                        
+                        },
+                        complete: function(data,status) { //optional, used for debugging purposes
+                        //alert(status);
+                        }
+                        
+                    });//ajax
+                    
+                }); //passwordClick    
+            });// document ready
+            
+            
         </script>
     </head>
     
@@ -69,8 +118,14 @@
             <br />
             
             Password: <input type="password" id="password"> <br />
-            
             <button> Sign up!</button>
         </fieldset>
+        <footer>
+            <!--<img src="../../img/buddy_verified.png" alt="buddy checked"/><br/>-->
+            &copy;  2019. Christopher Jimenez - CST 336 Internet Programming <br />
+        <strong>Disclaimer:</strong> The content of this page is fake. It's only for educational purposes.
+            <br/><br/>
+            <img src="../../img/logo.png" alt="csumb.logo" />
+        </footer>
     </body>
 </html>
