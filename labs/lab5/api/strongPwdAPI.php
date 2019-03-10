@@ -22,5 +22,4 @@ $data = array();
 $data["suggestPwd"] = $password;
 
 echo json_encode($data);
-
 ?>

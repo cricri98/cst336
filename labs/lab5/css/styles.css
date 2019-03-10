@@ -1,3 +1,24 @@
+body{
+    text-align: center;
+    background-color: #DDA0DD;
+}
 footer{
     text-align: center;
+}
+#button{
+    border-radius: 8px;
+}
+hr{
+    width:75%;
+    height:7px;
+    background:white;
+    border-radius: 8px;
+}
+legend{
+    font-size: 31px;
+    line-height: 40px;
+    font-weight: 600;
+}
+Btn{
+    text-align:right;
 }
