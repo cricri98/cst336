@@ -2,18 +2,69 @@
 <html>
     <head>
         <meta charset= "utf-8"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <title> Homework 3</title>
         <link rel="stylesheet" href="css/styles.css">
-            <script>
+    <script>
+        $(document).ready(function(){
             
-            </script>
+          $("#numbers").on("click",function(){
+              $.ajax({
+                type: "GET",
+                url: "api/getNumbers.php",
+                dataType: "JSON",
+                //data: { "": },
+                success: function(data,status) {
+                //alert(data);
+                    $("#LottoNumbers").html("Lotto Numbers: " +data);
+                },
+                complete: function(data,status) { //optional, used for debugging purposes
+                //alert(status);
+                }
+          });
+    });
+        $("#facts").on("click",function(){
+              $.ajax({
+                type: "GET",
+                url: "api/getFact.php",
+                dataType: "JSON",
+                //data: { "": },
+                success: function(data,status) {
+                //alert(data);
+                    $("#RandFact").html("Random Fact: " +data);
+                   /* $("#luck").html("<img src ='img/lucky.png' alt='lucky'");*/
+                },
+                complete: function(data,status) { //optional, used for debugging purposes
+                //alert(status);
+                }
+            });//ajax
+          });// fact   
+           $("#luck").html("<img src ='img/lucky.png' alt='lucky'");
+        });
+    </script>
         </head>
         <body>
+            <br>
             <h1> Homework 3</h1>
             <hr>
+                <h3>Get a Random Fact</h3>
+                <button id="facts" class="button">Search</button>
+                <br>
+                <div id="RandFact"></div>
+                <span id=""></span>
+                 <br>
+                 <br>
+                <h3>Get your Lottory Numbers</h3>
+                <button id="numbers" class="button">Search</button><br>
+                <div id="LottoNumbers"></div>
+                <span id="luck"></span>
             <hr>
             <footer>
-                  &copy;  2019. Christopher Jimenez - CST 336 Internet Programming <br />
+                  <img src="../../img/buddy_verified.png" alt="buddy checked"/><br/>
+            &copy;  2019. Christopher Jimenez - CST 336 Internet Programming <br />
+        <strong>Disclaimer:</strong> The content of this page is fake. It's only for educational purposes.
+            <br/><br/>
             <img src="../../img/logo.png" alt="csumb.logo" />
             </footer>
         </body>
