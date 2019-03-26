@@ -1,0 +1,83 @@
+<html>
+<head>
+    <title>Shopping Cart</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="css/styles.css" rel="stylesheet" type="text/css" />
+    <script>
+       $(document).ready(function(){
+           $.ajax({
+                    type: "GET",
+                    url: "api/getProducts.php",
+                    dataType: "json",
+                    success: function(data, status) {
+                        data.forEach(function(key) {
+                            $("#products").append("<option value=" + key["productId"] + ">" + key["productName"] + "</option>");
+                        });
+                    }
+                });// End of getCategories 
+           });
+    </script>
+</head>
+
+<body>
+    <h1> Midterm Practice  </h1>
+
+    <table>
+    <tr>
+        <th>Product</th>
+        <th>Unit <br> Price</th>
+        <th> Quantity </th>
+        <th>Total</th>
+    </tr>
+   
+    <tr>
+        <td id="product"></td>
+        <td id="price"></td>
+        <td id="qty"></td>
+        <td id="total"></td>
+    </tr>
+    <tr>
+        <td  id="something"><select name="product" id="products">
+                        <option value=""> Select One </option>
+                    </select>
+                </td>
+        <td></td>
+        <td id="select"> <input type="text" name="input" size="7"/> </td>
+        <td></td>
+    </tr>    
+   <tr>
+        <td>Discount</td>
+        <td ></td>
+        <td></td>
+        <td id="discount"></td>
+    </tr>    
+        
+    <tr>
+        <td>Subtotal</td>
+        <td></td>
+        <td></td>
+        <td id="subtotal"></td>
+    </tr>             
+        
+    <tr>
+        <td>Tax (10%)</td>
+        <td></td>
+        <td></td>
+        <td id="tax"></td>
+    </tr>
+    
+    <tr>
+        <td>Total</td>
+        <td></td>
+        <td></td>
+        <td id="total"></td>
+    </tr>
+       
+    </table>
+    <br>
+    Promo Code: <input type="text" name="code" id="code"><br>
+        
+
+</body>
+</html>
