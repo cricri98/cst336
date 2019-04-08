@@ -11,7 +11,7 @@ $dbConn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 // Setting Errorhandling to Exception
 $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
 
-$sql = "SELECT * FROM mp_products ORDER BY productPrice ";
+$sql = "SELECT * FROM mp_product ORDER BY productPrice ";
 $stmt = $dbConn -> prepare($sql);  //$connection MUST be previously initialized
 $stmt->execute();
 $records = $stmt->fetchAll(PDO::FETCH_ASSOC); //use fetch for one record, fetchAll for multiple
