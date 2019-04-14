@@ -130,6 +130,13 @@ if (!isset($_SESSION['adminName'])) {
   </div>
 </div>
 
+ <footer>
+            <img src="../../img/buddy_verified.png" alt="buddy checked"/><br/>
+            &copy;  2019. Christopher Jimenez - CST 336 Internet Programming <br />
+        <strong>Disclaimer:</strong> The content of this page is fake. It's only for educational purposes.
+            <br/><br/>
+            <img src="../../img/logo.png" alt="csumb.logo" />
+        </footer>
 
     </body>
 </html>
