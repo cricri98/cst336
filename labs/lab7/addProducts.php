@@ -18,20 +18,20 @@ if(!isset($_SESSION['adminName'])) {
     <body>
         <h1> Add New Product </h1>
         
-         Enter Product Name: <input type="text" id ="productName"><br>
+         Enter Product Name: <input type="text" id ="productName" size="50"><br>
          
-         Enter Product Description: <textarea id="productDescription" cols"50" rows="3"></textarea><br>
+         Enter Product Description: <textarea id="productDescription" cols"40" rows="3"></textarea><br>
          
-         Product Image: <input type="text" id ="productImage"><br>
+         Product Image: <input type= "text" id ="productImage"><br>
          
-         Product Price<input type="text" name="productPrice"/><br>
+         Product Price: <input type="text" id="productPrice"><br>
          
          Categories Name: <Select id = "catId">
         <Option> Select One </Option>
         </Select><br>
         
          <button id="addBtn">Add Product</button> 
-         <span id="totalProducts"></span>
+         <span id="totalProducts"></span> 
          
          </body>
          <script>
@@ -50,13 +50,13 @@ if(!isset($_SESSION['adminName'])) {
                    $.ajax({
 
                         type: "GET",
-                        url: "api/addProduct.php",
+                        url: "api/addProductAPI.php",
                         dataType: "json",
                         data: { "productName": $("#productName").val(),
                                 "productDescription": $("#productDescription").val(),
                                 "productImage": $("#productImage").val(),
                                 "productPrice": $("#productPrice").val(),
-                                "productId": $("#catId").val()
+                                "catId": $("#catId").val()
                         },
                         success: function(data,status) {
                             $("#totalProducts").html(data.totalproducts + " Products");

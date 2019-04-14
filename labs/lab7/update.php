@@ -10,14 +10,15 @@
             type: "GET",
             url: "../lab6/api/getCatagories.php",
             dataType: "json",
-            success: function(data,status)  {
+            success: function(data, status)  {
                 data.forEach(function(key) {
                     $("#catId").append("<option value=" + key["catId"] + ">" + key["catName"] + "</option>");
                      });
+                     getProductInfo();
                 }
             
             });//ajax 
-            
+            function getProductInfo(){
             $.ajax({
                     type: "GET",
                     url: "api/getProductInfo.php",
@@ -31,13 +32,33 @@
                      $("#catId").val(data["catId"]).change();
                     }
                 });
-                
+            }// getProductInfo 
+            
                 $(document).ready(function(){
                     $("#submitButton").on("click", function(){
-                        alert("hello vietnam");
-                    })
-                })// document ready
-                
+                        //alert("hello vietnam");
+                        $.ajax({
+                            type: "GET",
+                            url: "api/updateProductAPI.php",
+                            dataType: "json",
+                            data:{"productId": <?=$_GET['productId']?>,
+                                "productDescription": $("#productDescription").val(),
+                                "productPrice": $("#productPrice").val(),
+                                "productName": $("#productName").val(),
+                                "catId": $("#catId").val(),
+                                "productImage": $("#productImage").val()
+    
+                            },
+                            success: function(data,status) {
+                            //alert(data);
+                            
+                            }
+                            
+                            });//ajax 
+                            $("#updated").html("Product Updated");
+                    });
+                });// document ready
+            
                 
             </script>
     </head>
@@ -56,6 +77,8 @@
     </Select><br>
     
     <button id="submitButton">Update Product</button>
+    
+    <span id="updated"></span>
 
     </body>
 </html>
