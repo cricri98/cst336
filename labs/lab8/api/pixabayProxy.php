@@ -1,44 +1,43 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title> Pixabay API Demo </title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<style>
-body {
-text-align: center;
+<?php
+
+//https://pixabay.com/api/?key=5589438-47a0bca778bf23fc2e8c5bf3e&image_type=photo&orientation=horizontal&safesearch=true&per_page=100
+
+$keyword = $_GET['keyword'];
+
+$curl = curl_init();
+      curl_setopt_array($curl, array(
+      CURLOPT_URL => "https://pixabay.com/api/?key=5589438-47a0bca778bf23fc2e8c5bf3e&q=$keyword&image_type=photo&orientation=horizontal&safesearch=true&per_page=50",
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_TIMEOUT => 30,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => "GET",
+      CURLOPT_HTTPHEADER => array(
+      "cache-control: no-cache"
+      ),
+   ));
+
+$jsonData = curl_exec($curl);
+$err = curl_error($curl);
+curl_close($curl);
+
+//echo $jsonData;
+
+$data = json_decode($jsonData, true);  //from JSON format to an Array
+
+//print_r($data);
+
+$imageURLs = array();
+
+for ($i = 0; $i < 50; $i++) {
+
+  $imageURLs[] = $data["hits"][$i]["webformatURL"];
+  
 }
-img {
-border-radius: 20px;
-}
-</style>
-<script>
 
-function searchImage() {
+shuffle($imageURLs);
 
-$.ajax({
-type: "GET",
-url: "https://pixabay.com/api/?key=5589438-47a0bca778bf23fc2e8c5bf3e",
-dataType: "json",
-data: { "q":$("#keyword").val() },
-success: function(data, status) {
-let randomImage = Math.floor(Math.random() * data.hits.length);
-$('#image').html("<img src='"+ data.hits[ randomImage ].webformatURL+"' width='500'>");
-$('#image').append("<br>Likes: " + data.hits[ randomImage ].likes)
-}
-}); //ajax 
+echo json_encode(array_slice($imageURLs, 0, 9)); 
 
-}//searchImage()
+//print_r($imageURLs);
 
-</script>
-</head>
-<body>
-
-<h1> Pixabay Image Search </h1>
-Keyword: <input type="text" id="keyword"/> 
-<button onclick="searchImage()"> Search </button>
-<br /><br />
-
-<div id="image"></div>
-
-</body>
-</html>
+?>

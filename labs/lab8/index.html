@@ -56,7 +56,14 @@ img {
     
     $(document).ready(function(){
         
-        $("#images").on("click", ".favorite", function(){ alert("hi") });
+        $("#images").on("click", ".favorite", function(){
+            if ($(this).attr("src") == "img/favorite.png") {
+                $(this).attr("src", "img/favorite_on.png");
+            } else{
+                $(this).attr("src","img/favorite.png");
+            }
+            
+        });
     
         
     });//documentReady
