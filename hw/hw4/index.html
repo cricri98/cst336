@@ -2,13 +2,46 @@
 <html>
     <head>
         <title> Homework 4 </title>
-        
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
     </head>
+    <style>
+    body {
+    text-align: center;
+    }
+    img {
+    border-radius: 20px;
+    }
+    </style>
+    <script>
+        function searchImage() {
+
+            $.ajax({
+            type: "GET",
+            url: "https://pixabay.com/api/?key=5589438-47a0bca778bf23fc2e8c5bf3e",
+            dataType: "json",
+            data: { "q":$("#keyword").val() }, 
+            success: function(data, status) {
+                let randomImage = Math.floor(Math.random() * data.hits.length);
+                $('#image').html("<img src='"+ data.hits[ randomImage ].webformatURL+"' width='500'>");
+                $('#image').append("<br>Likes: " + data.hits[ randomImage ].likes)
+                }
+            }); //ajax 
+            
+            }//searchImage()
+
+    </script>
     <body>
            
-         <h1> Homework 4 </h1>
+         <h1> Homework 4 </h1><br>
+         <h3> Pixabay Image Search </h3>
+            Keyword: <input type="text" id="keyword"/> 
+            <button onclick="searchImage()"> Search </button>
+            <br /><br />
+            
+            <div id="image"></div> 
+                        
             
             <footer>
                   <img src="../../img/buddy_verified.png" alt="buddy checked"/><br/>
@@ -19,3 +52,5 @@
             </footer>
     </body>
 </html>
+
+
