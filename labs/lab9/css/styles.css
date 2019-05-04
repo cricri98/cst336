@@ -1,0 +1,10 @@
+body{
+    text-align: center;
+}  
+
+hr{
+    width:75%;
+    height:7px;
+    background:white;
+    border-radius: 8px;
+}
